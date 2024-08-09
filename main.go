@@ -103,6 +103,58 @@ func sliceOP() {
 	fmt.Print(cSlice)
 }
 
+func computedValue() int {
+	return 3
+}
+
+func if1() {
+	// 计算获取值x,然后根据x返回的大小，判断是否大于10。
+	if x := computedValue(); x > 10 {
+		fmt.Println("x is greater than 10")
+	} else {
+		fmt.Println("x is less than 10")
+	}
+	//这个地方如果这样调用就编译出错了，因为x是条件里面的变量
+	// fmt.Println(x)
+}
+
+func goto1() {
+	i := 0
+Here: //这行的第一个词，以冒号结束作为标签
+	println(i)
+	if i == 9999 {
+		// return
+		goto End
+	}
+	i++
+	goto Here //跳转到Here去
+End:
+	println(i)
+}
+
+func for1() {
+	sum := 0
+	for index := 0; index < 10; index++ {
+		sum += index
+	}
+	fmt.Printf("sum is equal to: %d", sum)
+}
+
+func forRange() {
+	myMap := map[string]int{
+		"Alice": 25,
+		"Bob":   30,
+		"Carol": 35,
+	}
+	for k, v := range myMap {
+		fmt.Println("map's key:", k)
+		fmt.Println("map's val:", v)
+	}
+	for _, v := range myMap {
+		fmt.Println("map's val:", v)
+	}
+}
+
 func main() {
 	// arr()
 	// arr1()
@@ -110,5 +162,9 @@ func main() {
 	// iota1()
 	// str()
 	// slice1()
-	sliceOP()
+	// sliceOP()
+	// if1()
+	// goto1()
+	// for1()
+	forRange()
 }
